@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import QuestionBody from '../../components/QuestionBody';
+import React from 'react';
+import MainApp from '../../components/app/MainApp';
 
 import './main-body.css';
 
-function MainBody(props) {
-
-    const { questionData } = props;
-
-    const [currentQuestion, setCurrentQuestion] = useState(1)
+function MainBody() {
 
     return (
         <div className='main-body'>
             <h2>This is main section</h2>
-            <QuestionBody
-                currentQuestion={currentQuestion}
-            />
+            <MainApp />
         </div>
     )
 }

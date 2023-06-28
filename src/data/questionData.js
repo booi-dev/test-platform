@@ -3,6 +3,7 @@ const QUESTION_DATA = [
 
     {
         id: '1',
+        questionNumber: 1,
         questionBody: "This is the first question",
         responseOptions: [
             {
@@ -28,6 +29,7 @@ const QUESTION_DATA = [
 
     {
         id: '2',
+        questionNumber: 2,
         questionBody: "This is the first question",
         responseOptions: [
             {
@@ -52,6 +54,7 @@ const QUESTION_DATA = [
     },
     {
         id: '3',
+        questionNumber: 3,
         questionBody: "This is the first question",
         responseOptions: [
             {
@@ -76,6 +79,7 @@ const QUESTION_DATA = [
     },
     {
         id: '4',
+        questionNumber: 4,
         questionBody: "This is the first question",
         responseOptions: [
             {
