@@ -1,2 +1,26 @@
 .question-tracker-board {
+  background-color: var(--bg-secondary-clr);
+  padding: var(--app-space-lg);
+  min-height: 400px;
+}
+
+.question-tracker__indicator-box-container {
+  display: flex;
+  gap: var(--app-space-md);
+}
+
+.question-tracker__indicator-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--stroke-primary-clr);
+  border-radius: 10px;
+  width: 35px;
+  aspect-ratio: 1/1;
+  color: var(--stroke-primary-clr);
+}
+
+.question-tracker__indicator-box.active {
+  border: 2px solid var(--accent-primary-clr);
+  color: var(--accent-primary-clr);
 }

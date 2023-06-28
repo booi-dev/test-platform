@@ -1,4 +1,6 @@
 .main-header {
-  padding: 1.5em;
-  margin-block-start: 0.25em;
+  padding: var(--app-space-lg);
+  margin-block-start: var(--app-space-lg);
+  border: 1px solid var(--stroke-primary-clr);
+  background-color: var(--stroke-primary-clr);
 }

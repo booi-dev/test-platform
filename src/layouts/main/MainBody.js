@@ -8,7 +8,6 @@ function MainBody() {
 
     return (
         <div className='main-body'>
-            <h2>This is main section</h2>
             <MainApp />
         </div>
     )

@@ -1,9 +1,26 @@
 .question-body {
-  background-color: var(--fg-primary-clr);
+  background-color: var(--bg-secondary-clr);
+  padding: var(--app-space-lg);
+  color: var(--text-primary-clr);
+}
+
+.question-body h2 {
+  color: var(--text-primary-clr);
+}
+
+.question-body__question-box {
+  border: 2px solid var(--stroke-primary-clr);
+  padding: var(--app-space-md);
+  margin-block: var(--app-space-md);
 }
 
 .question-body__option {
   display: flex;
   align-items: center;
   gap: var(--app-space-md);
+}
+
+.question-body__option-line {
+  font-size: var(--font-size-lg);
+  font-weight: 400;
 }
