@@ -1,5 +1,6 @@
 import React from 'react';
-import MainApp from '../../components/mainApp/MainApp';
+import MainApp from '../../components/main-app/MainApp';
+
 
 import './main-body.css';
 

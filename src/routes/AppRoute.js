@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import store from "./redux/app/store";
 
 import Navbar from "../layouts/nav/Nav";
-import LandingPage from "../pages/LandingPage";
+import LandingPage from "../pages/landing-page/LandingPage";
 
 function AppRoute() {
 

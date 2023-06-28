@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="app dark">
+    <div className="app">
       <AppRoute />
     </div>
   );

@@ -1,0 +1,11 @@
+.main-app {
+  background-color: green;
+  width: 100%;
+  max-width: 70em;
+  margin-inline: auto;
+}
+
+.main-app__body {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+}

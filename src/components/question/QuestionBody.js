@@ -6,11 +6,11 @@ import './styles/question-body.css'
 
 function QuestionBody(props) {
 
-    const { currentQuestion } = props;
+    const { currentQuestion, currentQuestionIndex } = props;
 
     return (
         <div className='question-body'>
-            <h2> Question Number: {currentQuestion.questionNumber} </h2>
+            <h2> Question Number: {currentQuestionIndex} </h2>
             <h2> {currentQuestion.questionBody} </h2>
             <div className='question-body__option-container'>
                 {currentQuestion.responseOptions?.map((response) => (
@@ -23,6 +23,7 @@ function QuestionBody(props) {
                 ))
                 }
             </div>
+
         </div>
     )
 }

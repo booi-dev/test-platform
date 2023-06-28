@@ -1,8 +1,13 @@
-import React from 'react'
+import React from 'react';
+import QuestionTrackerBoard from '../../components/question/QuestionTrackerBoard';
+
+import './aside.css'
 
 function Aside() {
     return (
-        <div>Aside</div>
+        <div className='aside'>
+            <QuestionTrackerBoard />
+        </div>
     )
 }
 
