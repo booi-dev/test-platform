@@ -76,8 +76,8 @@
 }
 
 body .dark {
-  background-color: #181818;
-  color: red;
+  background-color: var(--bg-primary-clr);
+  color: var(--stroke-primary-clr);
 }
 
 /* utils */
@@ -311,3 +311,16 @@ input[type="number"] {
   appearance: textfield;
   -moz-appearance: textfield;
 }
+
+/* @media (prefers-color-scheme: dark) {
+  html {
+    background-color: #181818; 
+    color: #dcdcdc;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    background-color: #fff; 
+  }
+} */

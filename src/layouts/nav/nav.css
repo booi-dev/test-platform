@@ -1,0 +1,9 @@
+.nav {
+  background-color: var(--bg-secondary-clr);
+  border: 1px solid var(--stroke-primary-clr);
+  padding: 1.5em;
+}
+
+.nav__title {
+  font-size: var(--font-size-2lg);
+}

@@ -1,4 +1,5 @@
-import AppRoute from './routes/Route';
+import React from 'react';
+import AppRoute from './routes/AppRoute';
 
 import './App.css';
 

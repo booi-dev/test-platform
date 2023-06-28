@@ -17,16 +17,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-@media (prefers-color-scheme: dark) {
-  html {
-    background-color: #181818; /* Dark background color */
-    color: #dcdcdc;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  html {
-    background-color: #fff; /* Light background color */
-  }
-}
