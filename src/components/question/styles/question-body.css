@@ -1,7 +1,17 @@
 .question-body {
-  background-color: var(--bg-secondary-clr);
+  /* background-color: var(--bg-secondary-clr); */
   padding: var(--app-space-lg);
   color: var(--text-primary-clr);
+  animation: fade-in 2s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .question-body h2 {
@@ -12,6 +22,10 @@
   border: 2px solid var(--stroke-primary-clr);
   padding: var(--app-space-md);
   margin-block: var(--app-space-md);
+}
+
+.question-body__option-container {
+  margin-inline-start: 1em;
 }
 
 .question-body__option {

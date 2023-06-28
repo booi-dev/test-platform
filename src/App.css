@@ -1,5 +1,5 @@
 :root {
-  --app-width: 80rem;
+  --app-width: 70rem;
 
   --primary-font-family: "poppins";
 
@@ -67,6 +67,7 @@
   --app-space-2lg: 2em;
 
   --stroke-primary-clr: #2f99d7;
+  --stroke-secondary-clr: #033f63;
 
   --shadow-primary-clr: #000000; /* blur - 10, y - 4 */
 
@@ -314,15 +315,15 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   html {
-    background-color: #181818; 
-    color: #dcdcdc;
+    background-color: var(--bg-primary-clr);
+    color: var(--text-primary-clr);
   }
 }
 
 @media (prefers-color-scheme: light) {
   html {
-    background-color: #fff; 
+    background-color: #fff;
   }
-} */
+}

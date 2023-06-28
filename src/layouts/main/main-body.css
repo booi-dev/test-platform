@@ -1,4 +1,4 @@
 .main-body {
-  padding: var(--app-space-lg);
+  padding: var(--app-space-sm);
   color: var(--text-primary-clr);
 }

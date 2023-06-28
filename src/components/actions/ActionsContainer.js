@@ -6,12 +6,20 @@ function ActionsContainer(props) {
     const { handleNextQuestion, handlePrevQuestion } = props;
 
     return (
-        <div className='actions-container'>
-            <button className='actions-container__btn'
-                onClick={handlePrevQuestion}>PREV</button>
-            <button className='actions-container__btn' >ATTEMPT LATER</button>
-            <button className='actions-container__btn'
-                onClick={handleNextQuestion}>NEXT</button>
+        <div className='actions-box-container'>
+            <div className='actions-box'>
+                <div className='actions-box__top'>
+                    <button className='actions-box__btn'
+                        onClick={handlePrevQuestion}>PREV</button>
+                    <button className='actions-box__btn' > FLAG </button>
+                    <button className='actions-box__btn'
+                        onClick={handleNextQuestion}>NEXT</button>
+                </div>
+
+                <button className='actions-box__btn submit'
+                    onClick={handleNextQuestion}>SUBMIT</button>
+            </div>
+
         </div>
     )
 }

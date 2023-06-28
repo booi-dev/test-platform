@@ -1,11 +1,11 @@
 .main-app {
   width: 100%;
-  max-width: 70em;
+  max-width: var(--app-width);
   margin-inline: auto;
 }
 
 .main-app__body {
   display: grid;
   grid-template-columns: 300px 1fr;
-  gap: var(--app-space-lg);
+  /* gap: var(--app-space-sm); */
 }
