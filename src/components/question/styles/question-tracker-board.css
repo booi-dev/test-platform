@@ -14,15 +14,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--stroke-primary-clr);
+  border: 2px solid;
   border-radius: 10px;
   width: 35px;
   aspect-ratio: 1/1;
-  color: var(--stroke-primary-clr);
-  transition: all 0.3s ease-in;
+  color: var(--text-secondary-clr);
+  transition: all 0.2s ease-in;
 }
 
 .question-tracker__indicator-box.active {
   border: 2px solid var(--accent-primary-clr);
+  background-color: transparent;
   color: var(--accent-primary-clr);
+}
+
+.question-tracker__indicator-box.flag {
+  border: 2px solid #e25353;
+  background-color: #e25353;
+  color: black;
+}
+
+.question-tracker__indicator-box.active.flag {
+  border: 2px solid white;
+  background-color: #e25353;
+  color: white;
+  font-weight: 500;
 }

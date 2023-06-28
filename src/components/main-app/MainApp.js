@@ -39,7 +39,7 @@ function MainApp() {
     const [testMetaState, testMetaDispatch] = useReducer(testMetaReducer, testMetaInitialState);
 
     const questionData = testMetaState.questionData;
-    const questionState = testMetaState.questionsState;
+    const questionStates = testMetaState.questionsState;
     const currentQuestion = testMetaState.currentQuestion;
     const currentQuestionIndex = testMetaState.currentQuestionIndex;
     // const totalNumberOfQuestions = testMetaState.questionData.length;
@@ -57,6 +57,23 @@ function MainApp() {
             testMetaDispatch({ type: "SET-CURRENT-QUESTION", payload: questionData[currentQuestionIndex - 1] })
         }
     }
+
+    const handleUpdateFlag = (questionId) => {
+        const updatedQuestionsState = questionStates.map((q) => {
+            if (q.question.id === questionId) {
+                return {
+                    ...q,
+                    isFlag: !q.isFlag
+                };
+            } else {
+                return { ...q };
+            }
+        });
+        console.log(updatedQuestionsState)
+
+        testMetaDispatch({ type: "SET-QUESTIONS-STATE", payload: updatedQuestionsState });
+    };
+
 
     const generateQuestionState = (data) => {
 
@@ -90,17 +107,17 @@ function MainApp() {
             <div className='main-app__body'>
                 <QuestionTrackerBoard
                     currentQuestion={currentQuestion}
-                    questionState={questionState}
+                    questionStates={questionStates}
                 />
                 <QuestionBody
                     currentQuestion={currentQuestion}
                     currentQuestionIndex={currentQuestionIndex}
+                    handleNextQuestion={handleNextQuestion}
+                    handlePrevQuestion={handlePrevQuestion}
+                    handleUpdateFlag={handleUpdateFlag}
                 />
             </div>
-            <ActionsContainer
-                handleNextQuestion={handleNextQuestion}
-                handlePrevQuestion={handlePrevQuestion}
-            />
+
         </div>
     )
 }

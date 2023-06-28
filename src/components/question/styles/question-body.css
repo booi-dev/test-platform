@@ -1,6 +1,5 @@
 .question-body {
   /* background-color: var(--bg-secondary-clr); */
-  padding: var(--app-space-lg);
   color: var(--text-primary-clr);
   animation: fade-in 2s ease;
 }
@@ -18,14 +17,20 @@
   color: var(--text-primary-clr);
 }
 
+.question-body__question-number {
+  margin: var(--app-space-lg);
+}
+
 .question-body__question-box {
+  margin: var(--app-space-lg);
   border: 2px solid var(--stroke-primary-clr);
   padding: var(--app-space-md);
-  margin-block: var(--app-space-md);
+  /* margin-block: var(--app-space-md); */
 }
 
 .question-body__option-container {
-  margin-inline-start: 1em;
+  margin-block: var(--app-space-lg);
+  margin-inline-start: 2.5em;
 }
 
 .question-body__option {

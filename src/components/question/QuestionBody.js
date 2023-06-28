@@ -1,4 +1,5 @@
 import React from 'react';
+import ActionsContainer from '../actions/ActionsContainer';
 
 import { checkbox, checkboxFill, closeBtnIcon } from '../../assets/icons'
 
@@ -6,11 +7,14 @@ import './styles/question-body.css'
 
 function QuestionBody(props) {
 
-    const { currentQuestion } = props;
+    const { currentQuestion,
+        handleNextQuestion,
+        handlePrevQuestion,
+        handleUpdateFlag } = props;
 
     return (
-        <div className='question-body'>
-            <div> Question Number: {currentQuestion?.questionNumber} </div>
+        <div className={`question-body`}>
+            <div className='question-body__question-number'> Question Number: {currentQuestion?.questionNumber} </div>
             <div className='question-body__question-box'> {currentQuestion?.questionBody} </div>
             <div className='question-body__option-container'>
                 {currentQuestion.responseOptions?.map((response) => (
@@ -23,7 +27,12 @@ function QuestionBody(props) {
                 ))
                 }
             </div>
-
+            <ActionsContainer
+                currentQuestionId={currentQuestion.id}
+                handleNextQuestion={handleNextQuestion}
+                handlePrevQuestion={handlePrevQuestion}
+                handleUpdateFlag={handleUpdateFlag}
+            />
         </div>
     )
 }

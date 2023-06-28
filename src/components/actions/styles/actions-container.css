@@ -1,6 +1,7 @@
 .actions-box-container {
-  padding: var(--app-space-md);
+  padding-block: var(--app-space-md);
   border-top: 1px solid var(--stroke-secondary-clr);
+  /* background-color: green; */
 }
 
 .actions-box {
@@ -27,6 +28,7 @@
   padding: var(--app-space-md);
   border: none;
   color: var(--text-primary-clr);
+  font-size: var(--font-size-xs);
   font-weight: bold;
   letter-spacing: 1.5px;
   flex: 1;

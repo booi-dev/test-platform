@@ -3,7 +3,10 @@ import './styles/actions-container.css'
 
 function ActionsContainer(props) {
 
-    const { handleNextQuestion, handlePrevQuestion } = props;
+    const { currentQuestionId,
+        handleNextQuestion,
+        handlePrevQuestion,
+        handleUpdateFlag } = props;
 
     return (
         <div className='actions-box-container'>
@@ -11,7 +14,9 @@ function ActionsContainer(props) {
                 <div className='actions-box__top'>
                     <button className='actions-box__btn'
                         onClick={handlePrevQuestion}>PREV</button>
-                    <button className='actions-box__btn' > FLAG </button>
+                    <button className='actions-box__btn'
+                        onClick={() => handleUpdateFlag(currentQuestionId)}
+                    > FLAG </button>
                     <button className='actions-box__btn'
                         onClick={handleNextQuestion}>NEXT</button>
                 </div>

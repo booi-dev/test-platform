@@ -6,16 +6,17 @@ function QuestionTrackerBoard(props) {
 
     const {
         currentQuestion,
-        questionState,
+        questionStates,
     } = props;
 
     return (
         <div className='question-tracker-board'>
             <div className='question-tracker__indicator-box-container'>
-                {questionState.map((q) => (
+                {questionStates.map((q) => (
                     <div key={q.question.id}
                         className={`question-tracker__indicator-box
                         ${currentQuestion.questionNumber === q.question.questionNumber ? "active" : ""}
+                        ${q.isFlag ? "flag" : ""}
                         `}>
                         {q.question.questionNumber}
                     </div>
