@@ -82,7 +82,7 @@
 
 body .dark {
   background-color: var(--bg-primary-clr);
-  color: var(--stroke-primary-clr);
+  color: var(--text-primary-clr);
 }
 
 /* utils */

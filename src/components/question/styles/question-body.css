@@ -1,0 +1,9 @@
+.question-body {
+  background-color: var(--fg-primary-clr);
+}
+
+.question-body__option {
+  display: flex;
+  align-items: center;
+  gap: var(--app-space-md);
+}

@@ -5,7 +5,7 @@
 
   margin-block-start: var(--app-space-lg);
   padding: var(--app-space-lg);
-  border: 1px solid var(--stroke-primary-clr);
+  background-color: var(--fg-secondary-clr);
 }
 
 .actions-container__btn {

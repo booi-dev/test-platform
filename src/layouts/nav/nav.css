@@ -1,7 +1,7 @@
 .nav {
   background-color: var(--bg-secondary-clr);
-  border: 1px solid var(--stroke-primary-clr);
   padding: 1.5em;
+  color: var(--stroke-primary-clr);
 }
 
 .nav__title {

@@ -1,5 +1,14 @@
 .main-body {
   padding: 1.5em;
-  border: 1px solid var(--stroke-primary-clr);
   margin-block-start: 0.25em;
+  background-color: var(--fg-primary-clr);
+}
+
+@media (width > 600px) {
+  .main-body {
+    width: 100%;
+    max-width: var(--app-width);
+    max-width: 900px;
+    margin-inline: auto;
+  }
 }
