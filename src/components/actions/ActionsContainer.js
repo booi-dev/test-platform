@@ -4,6 +4,7 @@ import './styles/actions-container.css'
 function ActionsContainer(props) {
 
     const { currentQuestionId,
+        currentQuestionState,
         handleNextQuestion,
         handlePrevQuestion,
         handleUpdateFlag } = props;
@@ -16,7 +17,16 @@ function ActionsContainer(props) {
                         onClick={handlePrevQuestion}>PREV</button>
                     <button className='actions-box__btn'
                         onClick={() => handleUpdateFlag(currentQuestionId)}
-                    > FLAG </button>
+                    >
+
+                        {currentQuestionState.isFlag
+                            ? 'UNFLAG'
+                            : 'FLAG'
+                        }
+
+                    </button>
+
+
                     <button className='actions-box__btn'
                         onClick={handleNextQuestion}>NEXT</button>
                 </div>

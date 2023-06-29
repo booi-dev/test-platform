@@ -8,9 +8,12 @@ import './styles/question-body.css'
 function QuestionBody(props) {
 
     const { currentQuestion,
+        currentQuestionState,
         handleNextQuestion,
         handlePrevQuestion,
         handleUpdateFlag } = props;
+
+    // console.log(currentQuestionState)
 
     return (
         <div className={`question-body`}>
@@ -29,6 +32,7 @@ function QuestionBody(props) {
             </div>
             <ActionsContainer
                 currentQuestionId={currentQuestion.id}
+                currentQuestionState={currentQuestionState}
                 handleNextQuestion={handleNextQuestion}
                 handlePrevQuestion={handlePrevQuestion}
                 handleUpdateFlag={handleUpdateFlag}

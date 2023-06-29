@@ -1,7 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import QuestionBody from '../question/QuestionBody';
 import QuestionTrackerBoard from '../question/QuestionTrackerBoard';
-import ActionsContainer from '../actions/ActionsContainer';
 
 import './styles/main-app.css'
 
@@ -64,7 +63,7 @@ function MainApp() {
 
     const handleUpdateFlag = (questionId) => {
         const updatedQuestionsState = questionStates.map((q) => {
-            if (q.question.id === questionId) {
+            if (q.id === questionId) {
                 return {
                     ...q,
                     isFlag: !q.isFlag
@@ -78,7 +77,6 @@ function MainApp() {
 
 
     const generateQuestionState = (data) => {
-
         let questionStateList = [];
 
         data.forEach((question) => {
@@ -118,8 +116,9 @@ function MainApp() {
                     setCurrentQuestion={setCurrentQuestion}
                 />
                 <QuestionBody
-                    currentQuestion={currentQuestion}
                     currentQuestionIndex={currentQuestionIndex}
+                    currentQuestion={currentQuestion}
+                    currentQuestionState={questionStates[currentQuestionIndex]}
                     handleNextQuestion={handleNextQuestion}
                     handlePrevQuestion={handlePrevQuestion}
                     handleUpdateFlag={handleUpdateFlag}
