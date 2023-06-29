@@ -7,6 +7,7 @@
 
 .question-tracker__indicator-box-container {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--app-space-md);
 }
 
@@ -16,16 +17,22 @@
   justify-content: center;
   border: 2px solid;
   border-radius: 10px;
+  background-color: transparent;
   width: 35px;
   aspect-ratio: 1/1;
   color: var(--text-secondary-clr);
-  transition: all 0.2s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+.question-tracker__indicator-box:active {
+  scale: 0.95;
 }
 
 .question-tracker__indicator-box.active {
   border: 2px solid var(--accent-primary-clr);
   background-color: transparent;
   color: var(--accent-primary-clr);
+  scale: 1.1;
 }
 
 .question-tracker__indicator-box.flag {

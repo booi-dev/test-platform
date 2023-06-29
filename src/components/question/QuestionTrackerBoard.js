@@ -7,19 +7,26 @@ function QuestionTrackerBoard(props) {
     const {
         currentQuestion,
         questionStates,
+        setCurrentQuestion
     } = props;
+
+    const handleSettingCurrentQuestion = (questionNumber) => {
+        setCurrentQuestion(questionNumber)
+    }
 
     return (
         <div className='question-tracker-board'>
             <div className='question-tracker__indicator-box-container'>
                 {questionStates.map((q) => (
-                    <div key={q.question.id}
+                    <button key={q.id}
                         className={`question-tracker__indicator-box
-                        ${currentQuestion.questionNumber === q.question.questionNumber ? "active" : ""}
+                        ${currentQuestion.questionNumber === q.questionNumber ? "active" : ""}
                         ${q.isFlag ? "flag" : ""}
-                        `}>
-                        {q.question.questionNumber}
-                    </div>
+                        `}
+                        onClick={() => handleSettingCurrentQuestion(q.questionNumber)}
+                    >
+                        {q.questionNumber}
+                    </button>
                 ))}
             </div>
         </div>

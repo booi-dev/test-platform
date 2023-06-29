@@ -21,6 +21,8 @@ const testMetaReducer = (state, action) => {
             return { ...state, questionData: action.payload }
         case "SET-CURRENT-QUESTION":
             return { ...state, currentQuestion: action.payload }
+        case 'SET-QUESTION-IDX':
+            return { ...state, currentQuestionIndex: action.payload - 1 };
         case 'INCREMENT-QUESTION-IDX':
             return { ...state, currentQuestionIndex: state.currentQuestionIndex + 1 };
         case 'DECREMENT-QUESTION-IDX':
@@ -47,15 +49,17 @@ function MainApp() {
     const handleNextQuestion = () => {
         if (currentQuestionIndex < questionData.length - 1) {
             testMetaDispatch({ type: "INCREMENT-QUESTION-IDX" })
-            testMetaDispatch({ type: "SET-CURRENT-QUESTION", payload: questionData[currentQuestionIndex + 1] })
         }
     }
 
     const handlePrevQuestion = () => {
         if (currentQuestionIndex > 0) {
             testMetaDispatch({ type: "DECREMENT-QUESTION-IDX" })
-            testMetaDispatch({ type: "SET-CURRENT-QUESTION", payload: questionData[currentQuestionIndex - 1] })
         }
+    }
+
+    const setCurrentQuestion = (tobeSetIdx) => {
+        testMetaDispatch({ type: "SET-QUESTION-IDX", payload: tobeSetIdx })
     }
 
     const handleUpdateFlag = (questionId) => {
@@ -69,8 +73,6 @@ function MainApp() {
                 return { ...q };
             }
         });
-        console.log(updatedQuestionsState)
-
         testMetaDispatch({ type: "SET-QUESTIONS-STATE", payload: updatedQuestionsState });
     };
 
@@ -81,7 +83,7 @@ function MainApp() {
 
         data.forEach((question) => {
             const questionState = {
-                question: question,
+                ...question,
                 isAttempted: false,
                 isFlag: false,
             }
@@ -90,6 +92,11 @@ function MainApp() {
 
         return questionStateList;
     }
+
+    useEffect(() => {
+        testMetaDispatch({ type: "SET-CURRENT-QUESTION", payload: questionData[currentQuestionIndex] })
+    }, [currentQuestionIndex])
+
 
     useEffect(() => {
         const questionStateData = generateQuestionState(QUESTION_DATA)
@@ -108,6 +115,7 @@ function MainApp() {
                 <QuestionTrackerBoard
                     currentQuestion={currentQuestion}
                     questionStates={questionStates}
+                    setCurrentQuestion={setCurrentQuestion}
                 />
                 <QuestionBody
                     currentQuestion={currentQuestion}
