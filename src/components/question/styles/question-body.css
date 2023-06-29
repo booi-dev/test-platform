@@ -39,7 +39,31 @@
   gap: var(--app-space-md);
 }
 
+.question-body__option button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  width: 30px;
+  aspect-ratio: 1/1;
+}
+
+.question-body__option button:active {
+  scale: 0.95;
+  animation: rotate 0.5s ease-in;
+}
+
 .question-body__option-line {
   font-size: var(--font-size-lg);
   font-weight: 400;
+}
+
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
 }

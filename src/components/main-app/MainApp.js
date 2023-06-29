@@ -7,7 +7,7 @@ import './styles/main-app.css'
 import QUESTION_DATA from '../../data/questionData';
 
 const testMetaInitialState = {
-    questionData: [],
+    questionStates: [],
     questionsState: [],
     currentQuestion: {},
     currentQuestionIndex: 0,
@@ -16,7 +16,7 @@ const testMetaInitialState = {
 const testMetaReducer = (state, action) => {
     switch (action.type) {
         case "SET-QUESTIONS":
-            return { ...state, questionData: action.payload }
+            return { ...state, questionStates: action.payload }
         case "SET-CURRENT-QUESTION":
             return { ...state, currentQuestion: action.payload }
         case 'SET-QUESTION-IDX':
@@ -27,8 +27,9 @@ const testMetaReducer = (state, action) => {
             return { ...state, currentQuestionIndex: state.currentQuestionIndex - 1 };
         case 'SET-QUESTIONS-STATE':
             return { ...state, questionsState: action.payload };
-        case 'UPDATE-QUESTIONs-STATE':
-            return { ...state, questionsState: action.payload };
+        case 'UPDATE-QUESTIONs-STATE': {
+            return { ...state, [action.payload.target]: action.payload.value };
+        }
         default:
             return state;
     }
@@ -36,18 +37,16 @@ const testMetaReducer = (state, action) => {
 
 function MainApp() {
 
-    const [testMetaState, testMetaDispatch] = useReducer(testMetaReducer, testMetaInitialState);
-
-    const questionData = testMetaState.questionData;
-    const questionStates = testMetaState.questionsState;
-    const currentQuestion = testMetaState.currentQuestion;
-    const currentQuestionIndex = testMetaState.currentQuestionIndex;
-    // const totalNumberOfQuestions = testMetaState.questionData.length;
-
     const [questionResponses, setQuestionResponses] = useState([])
 
+    const [testMetaState, testMetaDispatch] = useReducer(testMetaReducer, testMetaInitialState);
+
+    const questionStates = testMetaState.questionStates;
+    const currentQuestion = testMetaState.currentQuestion;
+    const currentQuestionIndex = testMetaState.currentQuestionIndex;
+
     const handleNextQuestion = () => {
-        if (currentQuestionIndex < questionData.length - 1) {
+        if (currentQuestionIndex < questionStates.length - 1) {
             testMetaDispatch({ type: "INCREMENT-QUESTION-IDX" })
         }
     }
@@ -73,63 +72,86 @@ function MainApp() {
                 return { ...q };
             }
         });
-        testMetaDispatch({ type: "SET-QUESTIONS-STATE", payload: updatedQuestionsState });
+        testMetaDispatch({ type: "SET-QUESTIONS", payload: updatedQuestionsState });
     };
 
 
-    const handleUpdateResponses = (questionId, res) => {
-        setQuestionResponses({
-            ...questionResponses,
-            response: res.response
+    const handleUpdateResponseData = (questionId, res) => {
+
+        const updatedResponses = questionResponses.map((q) => {
+            if (q.id === questionId) {
+                return {
+                    ...q,
+                    response: res.response
+                };
+            } else {
+                return { ...q };
+            }
         })
+
+        setQuestionResponses(updatedResponses);
     }
 
-    const generateQuestionState = (data) => {
-        let questionStateList = [];
+    const handleUpdateQuestionResponse = (questionId, res) => {
+
+        const updatedResponses = questionStates.map((q) => {
+            if (q.id === questionId) {
+                return {
+                    ...q,
+                    response: res.response
+                };
+            } else {
+                return { ...q };
+            }
+        })
+        testMetaDispatch({ type: "SET-QUESTIONS", payload: updatedResponses });
+    }
+
+    const generateQuestionStates = (data) => {
+        let newQuestionState = [];
 
         data.forEach((question) => {
             const questionState = {
                 ...question,
                 isAttempted: false,
                 isFlag: false,
+                response: null,
             }
-            questionStateList.push(questionState)
+            newQuestionState.push(questionState)
         })
 
-        return questionStateList;
+        return newQuestionState;
     }
 
     const generateResponses = (data) => {
         let questionResponses = []
 
-        data.forEach((question) => {
+        data.forEach((q) => {
             const response = {
-                questionNumber: question.questionNumber,
-                response: ''
+                id: q.id,
+                questionNumber: q.questionNumber,
+                response: null,
+                isCorrect: null
             }
             questionResponses.push(response)
         })
-
+        console.log("Q responses", questionResponses)
         return questionResponses;
     }
 
     useEffect(() => {
-        const questionStateData = generateQuestionState(QUESTION_DATA)
-        testMetaDispatch({ type: "SET-QUESTIONS-STATE", payload: questionStateData })
-    }, QUESTION_DATA)
+        testMetaDispatch({ type: "SET-CURRENT-QUESTION", payload: questionStates[currentQuestionIndex] })
+    }, [currentQuestionIndex, questionStates])
 
     useEffect(() => {
-        const questionResponses = generateResponses(QUESTION_DATA)
-        setQuestionResponses(questionResponses)
+        const newQuestionResponses = generateResponses(QUESTION_DATA)
+        setQuestionResponses(newQuestionResponses);
     }, [QUESTION_DATA])
 
     useEffect(() => {
-        testMetaDispatch({ type: "SET-CURRENT-QUESTION", payload: questionData[currentQuestionIndex] })
-    }, [currentQuestionIndex])
-
-    useEffect(() => {
-        testMetaDispatch({ type: "SET-QUESTIONS", payload: QUESTION_DATA })
-        testMetaDispatch({ type: "SET-CURRENT-QUESTION", payload: QUESTION_DATA[0] })
+        const newQuestionStates = generateQuestionStates(QUESTION_DATA)
+        testMetaDispatch({ type: "SET-QUESTIONS", payload: newQuestionStates })
+        testMetaDispatch({ type: "SET-CURRENT-QUESTION", payload: newQuestionStates[0] })
     }, [QUESTION_DATA])
 
     return (
@@ -143,10 +165,11 @@ function MainApp() {
                 <QuestionBody
                     currentQuestionIndex={currentQuestionIndex}
                     currentQuestion={currentQuestion}
-                    currentQuestionState={questionStates[currentQuestionIndex]}
                     handleNextQuestion={handleNextQuestion}
                     handlePrevQuestion={handlePrevQuestion}
                     handleUpdateFlag={handleUpdateFlag}
+                    handleUpdateResponseData={handleUpdateResponseData}
+                    handleUpdateQuestionResponse={handleUpdateQuestionResponse}
                 />
             </div>
 
