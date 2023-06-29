@@ -9,6 +9,8 @@ function ActionsContainer(props) {
         handlePrevQuestion,
         handleUpdateFlag } = props;
 
+    if (!currentQuestionState) return null
+
     return (
         <div className='actions-box-container'>
             <div className='actions-box'>
@@ -18,14 +20,11 @@ function ActionsContainer(props) {
                     <button className='actions-box__btn'
                         onClick={() => handleUpdateFlag(currentQuestionId)}
                     >
-
                         {currentQuestionState.isFlag
                             ? 'UNFLAG'
-                            : 'FLAG'
-                        }
+                            : 'FLAG'}
 
                     </button>
-
 
                     <button className='actions-box__btn'
                         onClick={handleNextQuestion}>NEXT</button>

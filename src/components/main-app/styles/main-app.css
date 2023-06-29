@@ -9,3 +9,9 @@
   grid-template-columns: 300px 1fr;
   /* gap: var(--app-space-sm); */
 }
+
+@media (width < 700px) {
+  .main-app__body {
+    grid-template-columns: 1fr;
+  }
+}

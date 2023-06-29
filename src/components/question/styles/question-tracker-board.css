@@ -1,8 +1,13 @@
 .question-tracker-board {
-  /* background-color: var(--bg-secondary-clr); */
   padding: var(--app-space-lg);
   min-height: 400px;
   border-right: 1px solid var(--stroke-secondary-clr);
+}
+
+@media (width < 700px) {
+  .question-tracker-board {
+    min-height: fit-content;
+  }
 }
 
 .question-tracker__indicator-box-container {
@@ -32,6 +37,7 @@
   border: 2px solid var(--accent-primary-clr);
   background-color: transparent;
   color: var(--accent-primary-clr);
+  font-weight: 700;
   scale: 1.1;
 }
 
@@ -42,8 +48,5 @@
 }
 
 .question-tracker__indicator-box.active.flag {
-  border: 2px solid white;
-  background-color: #e25353;
-  color: white;
-  font-weight: 500;
+  font-weight: 700;
 }

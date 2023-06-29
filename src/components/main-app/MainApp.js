@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import QuestionBody from '../question/QuestionBody';
 import QuestionTrackerBoard from '../question/QuestionTrackerBoard';
 
@@ -15,7 +15,6 @@ const testMetaInitialState = {
 
 const testMetaReducer = (state, action) => {
     switch (action.type) {
-
         case "SET-QUESTIONS":
             return { ...state, questionData: action.payload }
         case "SET-CURRENT-QUESTION":
@@ -44,6 +43,8 @@ function MainApp() {
     const currentQuestion = testMetaState.currentQuestion;
     const currentQuestionIndex = testMetaState.currentQuestionIndex;
     // const totalNumberOfQuestions = testMetaState.questionData.length;
+
+    const [questionResponses, setQuestionResponses] = useState([])
 
     const handleNextQuestion = () => {
         if (currentQuestionIndex < questionData.length - 1) {
@@ -76,6 +77,13 @@ function MainApp() {
     };
 
 
+    const handleUpdateResponses = (questionId, res) => {
+        setQuestionResponses({
+            ...questionResponses,
+            response: res.response
+        })
+    }
+
     const generateQuestionState = (data) => {
         let questionStateList = [];
 
@@ -91,16 +99,33 @@ function MainApp() {
         return questionStateList;
     }
 
-    useEffect(() => {
-        testMetaDispatch({ type: "SET-CURRENT-QUESTION", payload: questionData[currentQuestionIndex] })
-    }, [currentQuestionIndex])
+    const generateResponses = (data) => {
+        let questionResponses = []
 
+        data.forEach((question) => {
+            const response = {
+                questionNumber: question.questionNumber,
+                response: ''
+            }
+            questionResponses.push(response)
+        })
+
+        return questionResponses;
+    }
 
     useEffect(() => {
         const questionStateData = generateQuestionState(QUESTION_DATA)
         testMetaDispatch({ type: "SET-QUESTIONS-STATE", payload: questionStateData })
-
     }, QUESTION_DATA)
+
+    useEffect(() => {
+        const questionResponses = generateResponses(QUESTION_DATA)
+        setQuestionResponses(questionResponses)
+    }, [QUESTION_DATA])
+
+    useEffect(() => {
+        testMetaDispatch({ type: "SET-CURRENT-QUESTION", payload: questionData[currentQuestionIndex] })
+    }, [currentQuestionIndex])
 
     useEffect(() => {
         testMetaDispatch({ type: "SET-QUESTIONS", payload: QUESTION_DATA })
