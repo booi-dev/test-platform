@@ -8,7 +8,6 @@ import QUESTION_DATA from '../../data/questionData';
 
 const testMetaInitialState = {
     questionStates: [],
-    questionsState: [],
     currentQuestion: {},
     currentQuestionIndex: 0,
 };
@@ -25,11 +24,6 @@ const testMetaReducer = (state, action) => {
             return { ...state, currentQuestionIndex: state.currentQuestionIndex + 1 };
         case 'DECREMENT-QUESTION-IDX':
             return { ...state, currentQuestionIndex: state.currentQuestionIndex - 1 };
-        case 'SET-QUESTIONS-STATE':
-            return { ...state, questionsState: action.payload };
-        case 'UPDATE-QUESTIONs-STATE': {
-            return { ...state, [action.payload.target]: action.payload.value };
-        }
         default:
             return state;
     }
@@ -82,7 +76,7 @@ function MainApp() {
             if (q.id === questionId) {
                 return {
                     ...q,
-                    response: res.response
+                    response: res.response,
                 };
             } else {
                 return { ...q };
@@ -98,7 +92,9 @@ function MainApp() {
             if (q.id === questionId) {
                 return {
                     ...q,
-                    response: res.response
+                    response: res.response,
+                    isAttempted: true
+
                 };
             } else {
                 return { ...q };
@@ -135,7 +131,7 @@ function MainApp() {
             }
             questionResponses.push(response)
         })
-        console.log("Q responses", questionResponses)
+
         return questionResponses;
     }
 

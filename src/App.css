@@ -74,6 +74,15 @@
   --disable-clr: #727272;
 }
 
+@media (width < 700px) {
+  :root {
+    --app-space-sm: 0.25em;
+    --app-space-md: 0.75em;
+    --app-space-lg: 1em;
+    --app-space-2lg: 1.5em;
+  }
+}
+
 // app styles
 
 .app {
@@ -91,7 +100,7 @@ body .dark {
   max-width: 75rem;
 }
 
-@media (width > 600px) {
+@media (width > 700px) {
   .app-container {
     width: 100%;
     max-width: var(--app-width);

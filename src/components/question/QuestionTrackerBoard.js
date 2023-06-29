@@ -21,6 +21,7 @@ function QuestionTrackerBoard(props) {
                     <button key={q.id}
                         className={`question-tracker__indicator-box
                         ${currentQuestion.questionNumber === q.questionNumber ? "active" : ""}
+                        ${q.isAttempted ? "attempted" : ""}
                         ${q.isFlag ? "flag" : ""}
                         `}
                         onClick={() => handleSettingCurrentQuestion(q.questionNumber)}

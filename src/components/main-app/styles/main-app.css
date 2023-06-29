@@ -7,7 +7,7 @@
 .main-app__body {
   display: grid;
   grid-template-columns: 300px 1fr;
-  /* gap: var(--app-space-sm); */
+  /* min-height: calc(100vh - 250px); */
 }
 
 @media (width < 700px) {
